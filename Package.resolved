@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CppZXingCpp",
+        "repositoryURL": "https://github.com/sidepelican/zxing-cpp",
+        "state": {
+          "branch": "swiftpm",
+          "revision": "98f3f99db33e1655c9b797bec41483797e38a756",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
