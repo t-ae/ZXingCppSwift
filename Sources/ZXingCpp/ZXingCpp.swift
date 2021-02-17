@@ -10,8 +10,21 @@ public enum ImageFormat: Int32 {
     case XBGR = 6
 }
 
-public func QRDecode(data: UnsafePointer<UInt8>, rows: Int32, cols: Int32, format: ImageFormat) -> String? {
-    if let result = qr_decode(data, cols, rows, format.rawValue) {
+public enum Binarizer: Int32 {
+    case localAverage       = 0
+    case globalHistogram    = 1
+    case fixedThreshold     = 2
+    case boolCast           = 3
+}
+
+public func QRDecode(
+    data: UnsafePointer<UInt8>,
+    rows: Int32,
+    cols: Int32,
+    format: ImageFormat,
+    binarizer: Binarizer = .localAverage
+) -> String? {
+    if let result = qr_decode(data, cols, rows, format.rawValue, binarizer.rawValue) {
         return CppString(result).toString()
     }
     return nil

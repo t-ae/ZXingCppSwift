@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 
-cppstring * qr_decode(const unsigned char* data, int cols, int rows, int format);
+cppstring * qr_decode(const unsigned char* data, int cols, int rows, int format, int binarizer);
 
 #ifdef __cplusplus
 }

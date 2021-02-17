@@ -32,13 +32,30 @@ ZXing::ImageFormat intToImageFormat(int format) {
     }
 }
 
+ZXing::Binarizer intToBinarizer(int binarizer) {
+    switch (binarizer) {
+        case 0:
+            return ZXing::Binarizer::LocalAverage;
+        case 1:
+            return ZXing::Binarizer::GlobalHistogram;
+        case 2:
+            return ZXing::Binarizer::FixedThreshold;
+        case 3:
+            return ZXing::Binarizer::BoolCast;
+        default:
+            return ZXing::Binarizer::LocalAverage;
+    }
+}
+
 extern "C" {
 
-cppstring * qr_decode(const unsigned char* data, int cols, int rows, int format) {
+cppstring * qr_decode(const unsigned char* data, int cols, int rows, int format, int binarizer) {
     auto imageView = ZXing::ImageView(data, cols, rows, intToImageFormat(format));
 
     ZXing::DecodeHints hints;
     hints.setFormats(ZXing::BarcodeFormat::QRCode);
+    hints.setBinarizer(intToBinarizer(binarizer));
+
     ZXing::Result result = ZXing::ReadBarcode(imageView, hints);
 
     if (!result.isValid()) {
