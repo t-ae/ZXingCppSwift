@@ -65,4 +65,20 @@ cppstring * qr_decode(const unsigned char* data, int cols, int rows, int format,
     return new std::string(toUTF8(result.text()));
 }
 
+void qr_encode(const uint8_t* data, int length, int width, int height, uint8_t* image) {
+    std::wstring str;
+    ZXing::TextDecoder::Append(str, data, length, ZXing::CharacterSet::Unknown);
+    auto writer = ZXing::MultiFormatWriter(ZXing::BarcodeFormat::QRCode);
+
+    auto mat = writer.encode(str, width, height);
+    auto bitmap = ZXing::ToMatrix<uint8_t>(mat);
+    
+    int i = 0;
+    for(int y = 0 ; y < height ; y++) {
+        for(int x = 0 ; x < width ; x++) {
+            image[i++] = bitmap.get(x, y);
+        }
+    }
+}
+
 }
