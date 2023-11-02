@@ -11,7 +11,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(name: "CppZXingCpp", url: "https://github.com/sidepelican/zxing-cpp", .branch("swiftpm")),
+        .package(name: "CppZXingCpp", url: "https://github.com/t-ae/zxing-cpp", .branch("swiftpm")),
     ],
     targets: [
         .target(

@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "CppZXingCpp",
-        "repositoryURL": "https://github.com/sidepelican/zxing-cpp",
+        "repositoryURL": "https://github.com/t-ae/zxing-cpp",
         "state": {
           "branch": "swiftpm",
-          "revision": "a32802893835fac715c2d1120e0315f9f9bf7371",
+          "revision": "481bd81b4062277dd83db3f63ec28403a6c7278c",
           "version": null
         }
       }
